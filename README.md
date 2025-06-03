@@ -128,7 +128,7 @@ Não é possivel criar usuarios locais fora o admin, que deverá ser excluido co
 ### Banco de dados
 
 * ClickHouse, banco analítico
-* Redish, banco em cache
+* Redis, banco em cache
 * Postgres, banco relacional com replica
 
 ### Consideraçoes
@@ -139,17 +139,28 @@ Não é possivel criar usuarios locais fora o admin, que deverá ser excluido co
 
 O serviço é local, por isso não é provisionado uma rede adequada, no final do README está uma demonstração mais realista no Google Cloud
 
-### Tabela matrix de comparação
+O Python foi escolhido para lidar com operações matemáticas e analítica, devido o seu desempenho exepcional e solido. Sua principal desvantagem é o custo computacional e dificuldade de lidar com muitas requisições simultaneas.
+
+O Java para ser o Core da aplicação por sua consistencia e resiliencia, sua principal desvantagem é a curva de aprendizado e verbosidade
+
+O JavaScript para Front-end é padrão de mercado e baixa curva de aprendizado, no Back-end Node possui uma alta capacidade de lidar com grandes numeros de requisições Web, suas desvantagem é o tempo médio de resposta inferior a tecnologias concorrentes como PHP, No front-end pode sobrecarregar client-side se for mal otimizado.
+
+O Postgres por sua estrutura, tornaando as bases mais digitalmente facil de separar e possui uma arquitetura que reforça o uso de schemas, é ótimo para altas requisições porem não lida muito bem com grandes volumes de dados e procedures internas.
+
+Redis é padrão de mercado é possui alta compatibilidade com kong, possui tempo de resposta extremamente agíl, sua desvantagem é a falta de atualização pois nas versões mais novas é pago
+
+ClickHouse é um banco colunar com um dos maiores desempenhos atuais, é pessímo para transações de alterações de dados porem lida extremamente bem com alto carga de dados em suas tabelas, seu problema é falta de compatibilidade e pouca documentação.
+
+### Tabela matrix de comparação programação
 
 | Categoria     | Python| Java  | JavaScript |
 |---------------|-------|-------|-------|
-| Facilidade    | X     | X     | X     |
-| Velocidade    | x     | X     | X     |
-| Desempenho    | X     | X     | X     |
-| Escalabilidade| X     | X     | X     |
-| Comunidade    | X     | X     | X     |
-| Documentação  | X     | X     | X     |
-| Segurança     | X     | X     | X     |
-| Custo         | X     | X     | X     |
+| Facilidade    | X     | X     | x     |
+| Velocidade    | x     | X     | x     |
+| Desempenho    | X     | X     | x     |
+| Escalabilidade| X     | X     | x     |
+| Comunidade    | X     | X     | x     |
+| Documentação  | X     | X     | x     |
+| Custo         | X     | X     | x     |
 
 # English - EUA

@@ -242,7 +242,7 @@ Database --> Cicd
 
 #### Modelo de desing
 
-[https://www.figma.com/proto/Eosrz0eaVq52kG1z3gFocA/Web-Desing?node-id=0-1&t=tQiGimJXFbU63Mxo-1](https://www.figma.com/proto/Eosrz0eaVq52kG1z3gFocA/Web-Desing?node-id=0-1&t=tQiGimJXFbU63Mxo-1)
+[Figma desing](https://www.figma.com/proto/Eosrz0eaVq52kG1z3gFocA/Web-Desing?node-id=0-1&t=tQiGimJXFbU63Mxo-1)
 
 ### Concorrentes
 

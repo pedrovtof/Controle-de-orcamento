@@ -240,14 +240,19 @@ Database --> Cicd
 
 ### Diagrama de fluxos
 
-Concorrentes:
-Kinvo
-Minhas Economias
-Meu Dinheiro - Sistema para controle financeiro pessoal e empresarial
-Organizze: Controle Financeiro Pessoal - Organizador de contas
-Wisecash Web
+#### Modelo de desing
 
-Fontes
+[https://www.figma.com/proto/Eosrz0eaVq52kG1z3gFocA/Web-Desing?node-id=0-1&t=tQiGimJXFbU63Mxo-1](https://www.figma.com/proto/Eosrz0eaVq52kG1z3gFocA/Web-Desing?node-id=0-1&t=tQiGimJXFbU63Mxo-1)
+
+### Concorrentes
+
+* [Kinvo](https://kinvo.com.br/)
+* [Minhas Economias](https://minhaseconomias.com.br/)
+* [Meu Dinheiro - Sistema para controle financeiro pessoal e empresarial](https://www.meudinheiroweb.com.br/)
+* [Organizze: Controle Financeiro Pessoal - Organizador de contas](https://www.organizze.com.br/#recursos)
+* [Wisecash Web](https://www.wisecashapp.com.br/#/site)
+
+### Fontes
 
 [Gasto com apostas online chegam a 30 bilhoes| infomoney](https://www.infomoney.com.br/politica/gastos-com-apostas-online-chegam-a-r-30-bilhoes-por-mes-e-acendem-alerta-no-bc/)
 

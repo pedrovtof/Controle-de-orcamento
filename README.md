@@ -123,7 +123,7 @@ Por possuir dois microserviços e monolito, a arquitetura é híbrida
 
 Para evitar ataques o serviço conta com um rateLimit e autenticação via SSO.
 
-Não é possivel criar usuarios locais fora o admin, que deverá ser excluido com uma chamada de procedure XXXX(x) após testes concluidos.
+É possivel criar usuarios locais fora o root, que deverá ser excluido com uma chamada de procedure XXXX(x) após o primeiro login.
 
 ### Banco de dados
 
@@ -136,20 +136,13 @@ Não é possivel criar usuarios locais fora o admin, que deverá ser excluido co
 * Com essa arquitetura é possivel ter problemas pontuais em serviços distintos, priorizando o serviço Core.
 * O serviço Core é um POO com padrão CleanCode.
 * O KongAPI poderá ser integrado com Grafana/Prometheus
-
-O serviço é local, por isso não é provisionado uma rede adequada, no final do README está uma demonstração mais realista no Google Cloud
-
-O Python foi escolhido para lidar com operações matemáticas e analítica, devido o seu desempenho exepcional e solido. Sua principal desvantagem é o custo computacional e dificuldade de lidar com muitas requisições simultaneas.
-
-O Java para ser o Core da aplicação por sua consistencia e resiliencia, sua principal desvantagem é a curva de aprendizado e verbosidade
-
-O JavaScript para Front-end é padrão de mercado e baixa curva de aprendizado, no Back-end Node possui uma alta capacidade de lidar com grandes numeros de requisições Web, suas desvantagem é o tempo médio de resposta inferior a tecnologias concorrentes como PHP, No front-end pode sobrecarregar client-side se for mal otimizado.
-
-O Postgres por sua estrutura, tornaando as bases mais digitalmente facil de separar e possui uma arquitetura que reforça o uso de schemas, é ótimo para altas requisições porem não lida muito bem com grandes volumes de dados e procedures internas.
-
-Redis é padrão de mercado é possui alta compatibilidade com kong, possui tempo de resposta extremamente agíl, sua desvantagem é a falta de atualização pois nas versões mais novas é pago
-
-ClickHouse é um banco colunar com um dos maiores desempenhos atuais, é pessímo para transações de alterações de dados porem lida extremamente bem com alto carga de dados em suas tabelas, seu problema é falta de compatibilidade e pouca documentação.
+* O serviço é local, por isso não é provisionado uma rede adequada, no final do README está uma demonstração mais realista no Google Cloud
+* O Python foi escolhido para lidar com operações matemáticas e analíticas, devido ao seu desempenho excepcional e sólido. Sua principal desvantagem é o alto custo computacional e a dificuldade em lidar com muitas requisições simultâneas.
+* O Java para ser o Core da aplicação por sua consistencia e resiliencia, sua principal desvantagem é a curva de aprendizado e verbosidade
+* O JavaScript para Front-end é padrão de mercado e baixa curva de aprendizado, no Back-end Node possui uma alta capacidade de lidar com grandes numeros de requisições Web, suas desvantagem é o tempo médio de resposta inferior a tecnologias concorrentes como PHP, No front-end pode sobrecarregar client-side se for mal otimizado.
+* O Postgres por sua estrutura, tornaando as bases mais digitalmente facil de separar e possui uma arquitetura que reforça o uso de schemas, é ótimo para altas requisições porem não lida muito bem com grandes volumes de dados e procedures internas.
+* Redis é padrão de mercado é possui alta compatibilidade com Kong, possui tempo de resposta extremamente agíl, sua desvantagem é a falta de atualização pois nas versões mais novas é pago
+* ClickHouse é um banco colunar com um dos maiores desempenhos atuais, é pessímo para transações de alterações de dados porem lida extremamente bem com alto carga de dados em suas tabelas, seu problema é falta de compatibilidade e pouca documentação.
 
 ### Tabela matrix de comparação programação
 
@@ -162,5 +155,11 @@ ClickHouse é um banco colunar com um dos maiores desempenhos atuais, é pessím
 | Comunidade    | X     | X     | x     |
 | Documentação  | X     | X     | x     |
 | Custo         | X     | X     | x     |
+
+### Tabela matrix de comparação SGBD
+
+| Categoria     | Redis | Postgres  | ClickHouse    |
+|---------------|-------|-------|-------|
+| Facilidade    | X     | X     | x     |
 
 # English - EUA

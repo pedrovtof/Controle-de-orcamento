@@ -25,8 +25,9 @@ Plataforma web PaaS, a plataforma deverá permitir registros de metas, demonstra
 1. Funcionalidades principais
     * Login com e-mail (com suporte a SSO)
     * Login local
+    * Reset senha
     * Registro e histórico de despesas/receitas
-    * Criação de categorias/tags personalizadas
+    * Criação de SubCategorias/tags personalizadas
     * Previsão de gastos por categoria
     * Gráficos interativos e insights mensais
     * Cadastramento de contas diversas
@@ -41,9 +42,19 @@ Plataforma web PaaS, a plataforma deverá permitir registros de metas, demonstra
 
 ### Diagramas
 
-Caso de uso
+#### Caso de uso
 
-![alt text](./images/image.png)
+##### Login
+
+![alt text](./images/caso_uso_login.png)
+
+##### Core
+
+![alt text](./images/caso_uso_core.png)
+
+##### Data
+
+![alt text](./images/caso_uso_data.png)
 
 ### Diagrama classes
 

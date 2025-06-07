@@ -3,7 +3,7 @@ create database signup;
 
 create schema 
 
-CREATE TABLE login.user 
+CREATE TABLE user_data.user 
 ( 
  id INT PRIMARY KEY AUTO_INCREMENT,  
  name VARCHAR(n) NOT NULL,  
@@ -15,7 +15,7 @@ CREATE TABLE login.user
  UNIQUE (email)
 ); 
 
-CREATE TABLE login.user_status 
+CREATE TABLE user_data.user_status 
 ( 
  id INT PRIMARY KEY AUTO_INCREMENT,  
  name VARCHAR(n) NOT NULL,  

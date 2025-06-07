@@ -4,7 +4,7 @@
 
 ## EFN
 
-## Easy Fin
+## Easy Fin by Nievo
 
 ### Objetivo
 
@@ -12,7 +12,7 @@ Serviço de controle de orçamento pessoal.
 
 ### Problemática
 
-O aumento expressivo das casas de aposta (30 bilhões por mês de acordo com Banco Central) e perda contínua do Real frente ao Dólar (2,43 em 2005 para 4,95 em 2024, mais de 100% de desvalorização em 2025), confirmam o fato que a população Brasileira precisa de meios para gestão de orçamento. 
+O aumento expressivo das casas de aposta (30 bilhões por mês de acordo com Banco Central) e perda contínua do Real frente ao Dólar (2,43 em 2005 para 4,95 em 2024, mais de 100% de desvalorização em 2025), confirmam o fato que a população Brasileira precisa de meios para gestão de orçamento.
 
 ### Público alvo
 
@@ -40,6 +40,7 @@ Plataforma web PaaS, a plataforma deverá permitir registros de metas, demonstra
     * Conversão e valorização cambial (Real x Dólar)
 
 ### Diagramas
+
 Caso de uso
 
 ![alt text](./images/image.png)
@@ -242,7 +243,7 @@ Database --> Cicd
 
 #### Modelo de desing
 
-[https://www.figma.com/proto/Eosrz0eaVq52kG1z3gFocA/Web-Desing?node-id=0-1&t=tQiGimJXFbU63Mxo-1](https://www.figma.com/proto/Eosrz0eaVq52kG1z3gFocA/Web-Desing?node-id=0-1&t=tQiGimJXFbU63Mxo-1)
+Modelo criado no Figma, slides de telas se encontra na pasta
 
 ### Concorrentes
 

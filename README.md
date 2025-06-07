@@ -57,8 +57,8 @@ flowchart TD
 
  subgraph Database["Database"]
     subgraph Cluster["Cluster"]
-        dbCore[("Postgres")]
-        dbCoreRR[("Postgres-rr")]
+        dbCore[("Postgres-A")]
+        dbCoreRR[("Postgres-B")]
     end
 
   dbData[(ClickHouse)]

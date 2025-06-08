@@ -258,7 +258,7 @@ Database --> Cicd
 
 ##### Database Signup
 
-![Database Signup](./images/db_diagram_core.png)
+![Database Signup](./images/db_diagram_signup.png)
 
 ### Diagrama de fluxos
 

@@ -10,7 +10,11 @@ GRANT USAGE ON SCHEMA journey TO APP_MIGRATION_SERVICE_EFN;
 
 GRANT USAGE ON SCHEMA journey TO APP_SYSTEM_SERVICE_EFN;
 
-CREATE TABLE user_details.user (
+GRANT USAGE ON SCHEMA journey TO CROSS_DATABASE_USER;
+
+GRANT USAGE ON SCHEMA user_details TO CROSS_DATABASE_USER;
+
+CREATE TABLE IF NOT EXISTS user_details.user (
   id SERIAL PRIMARY KEY,
   name VARCHAR(150),
   email VARCHAR(100),
@@ -20,7 +24,7 @@ CREATE TABLE user_details.user (
   updated_at TIMESTAMP DEFAULT NULL
 );
 
-CREATE TABLE user_details.user_status (
+CREATE TABLE IF NOT EXISTS user_details.user_status (
   id SERIAL PRIMARY KEY,
   name VARCHAR(150) NOT NULL,
   description VARCHAR(255) NOT NULL,
@@ -29,7 +33,7 @@ CREATE TABLE user_details.user_status (
   active INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE TABLE user_details.user_password_history (
+CREATE TABLE IF NOT EXISTS user_details.user_password_history (
   id SERIAL PRIMARY KEY,
   user_password_id INTEGER NOT NULL,
   active INTEGER NOT NULL DEFAULT 0,
@@ -38,7 +42,7 @@ CREATE TABLE user_details.user_password_history (
   updated_at TIMESTAMP DEFAULT NULL
 );
 
-CREATE TABLE user_details.user_password (
+CREATE TABLE IF NOT EXISTS user_details.user_password (
   id SERIAL PRIMARY KEY,
   active INTEGER NOT NULL DEFAULT 0,
   user_id INTEGER,
@@ -47,7 +51,7 @@ CREATE TABLE user_details.user_password (
   updated_at TIMESTAMP DEFAULT NULL
 );
 
-CREATE TABLE journey.token_password (
+CREATE TABLE IF NOT EXISTS journey.token_password (
   id SERIAL PRIMARY KEY,
   value VARCHAR(40) NOT NULL,
   user_id INTEGER NOT NULL,
@@ -57,7 +61,7 @@ CREATE TABLE journey.token_password (
   token_config_id INTEGER
 );
 
-CREATE TABLE journey.token_config (
+CREATE TABLE IF NOT EXISTS journey.token_config (
   id SERIAL PRIMARY KEY,
   html_format TEXT NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT NOW(),
@@ -82,10 +86,10 @@ CREATE UNIQUE INDEX idx_unic_user_details_name ON user_details.user_status (name
 
 CREATE INDEX idx_user_status ON user_details.user (status_id);
 
-CREATE INDEX idx_user_status_name_active ON user_details.user_status (name, active);
-
 CREATE INDEX idx_user_password_user_id ON user_details.user_password (user_id);
 
 CREATE INDEX idx_user_password_history_password_id ON user_details.user_password_history (user_password_id);
 
 CREATE INDEX idx_token_password_user_id ON journey.token_password (user_id);
+
+GRANT SELECT ON user_details.user TO CROSS_DATABASE_USER;

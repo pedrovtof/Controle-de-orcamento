@@ -44,15 +44,15 @@ Plataforma web PaaS, a plataforma deverá permitir registros de metas, demonstra
 
 #### Caso de uso
 
-##### Login
+##### Serviço Login
 
 ![alt text](./images/caso_uso_login.png)
 
-##### Core
+##### Serviço Core
 
 ![alt text](./images/caso_uso_core.png)
 
-##### Data
+##### Serviço Data
 
 ![alt text](./images/caso_uso_data.png)
 
@@ -249,6 +249,16 @@ Database --> Cicd
 ```
 
 ### Diagrama SGBD
+
+#### Postgres
+
+##### Database Core
+
+![Database Core](./images/db_diagram_core.png)
+
+##### Database Signup
+
+![Database Signup](./images/db_diagram_core.png)
 
 ### Diagrama de fluxos
 

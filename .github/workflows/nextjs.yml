@@ -1,0 +1,122 @@
+name: Validate Next.js app
+
+on:
+  pull_request:
+    branches: ["master", "main"]
+
+jobs:
+  validate-dev:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: ./code/frontend/easy-fin-by-nievo/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./code/frontend/easy-fin-by-nievo/
+
+      - name: Install wait-on
+        run: npm install -g wait-on
+
+      - name: Run dev Next.js
+        run: |
+          npm run dev &
+          wait-on --httpTimeout 30000 http://localhost:3000 || exit 1
+        working-directory: ./code/frontend/easy-fin-by-nievo/
+
+
+      - name: Validate server
+        run: curl -I http://localhost:3000 | grep "200 OK" || exit 1
+
+
+  validate-build:
+    runs-on: ubuntu-latest
+    needs: validate-dev
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: ./code/frontend/easy-fin-by-nievo/package-lock.json
+
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        with:
+          path: ./code/frontend/easy-fin-by-nievo/node_modules
+          key: node-modules-${{ runner.os }}-${{ hashFiles('./code/frontend/easy-fin-by-nievo/package-lock.json') }}
+          restore-keys: |
+            node-modules-${{ runner.os }}-
+  
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./code/frontend/easy-fin-by-nievo/
+
+      - name: Run build Next.js
+        run: npm run build
+        working-directory: ./code/frontend/easy-fin-by-nievo/
+
+      - name: Cache Next.js build
+        uses: actions/cache@v3
+        with:
+          path: ./code/frontend/easy-fin-by-nievo/.next
+          key: next-build-${{ runner.os }}-${{ hashFiles('./code/frontend/easy-fin-by-nievo/package-lock.json') }}
+          restore-keys: |
+            next-build-${{ runner.os }}-
+
+
+  validate-production:
+    runs-on: ubuntu-latest
+    needs: validate-build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: ./code/frontend/easy-fin-by-nievo/package-lock.json
+          
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        with:
+          path: ./code/frontend/easy-fin-by-nievo/node_modules
+          key: node-modules-${{ runner.os }}-${{ hashFiles('./code/frontend/easy-fin-by-nievo/package-lock.json') }}
+          restore-keys: |
+            node-modules-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./code/frontend/easy-fin-by-nievo/
+
+      - name: Install wait-on
+        run: npm install -g wait-on
+
+      - name: Cache Next.js build
+        uses: actions/cache@v3
+        with:
+          path: ./code/frontend/easy-fin-by-nievo/.next
+          key: next-build-${{ runner.os }}-${{ hashFiles('./code/frontend/easy-fin-by-nievo/package-lock.json') }}
+          restore-keys: |
+            next-build-${{ runner.os }}-
+        
+      - name: Run server Next.js
+        run: |
+          npm start &
+          wait-on --httpTimeout 30000 http://localhost:3000 || exit 1
+        working-directory: ./code/frontend/easy-fin-by-nievo/
+
+      - name: Validate server
+        run: curl -I http://localhost:3000 | grep "200 OK" || exit 1

@@ -34,7 +34,6 @@ function Footer(){
                 <div>
                     {
                         menuData.map((item, index)=>{
-                            console.log(item, index)
                             return(
                                 <React.Fragment key={`${item.menuTitle}-${index}`.trim()}>
                                     <div>

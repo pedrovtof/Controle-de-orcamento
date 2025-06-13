@@ -1,6 +1,7 @@
 ### Contain
 
 - [ ] Resources
+- [ ] Features
 - [ ] Bugfix
 - [ ] Documentation
 - [ ] Build/CI/CD

@@ -1,15 +1,11 @@
 import React from 'react' ;
 import NavBar from '@/pages/_templates/navbar'
 
-const metadata ={
-    'Nav':'Easy Fin By Nievo'
-}
-
-function Header(){
+function Header(props){
     return(
         <React.Fragment>
                 <NavBar 
-                    AppNameMainTitleFromNavBar={metadata.Nav}
+                    AppNameMainTitleFromNavBar={props.Nav}
                 />
         </React.Fragment>
     )

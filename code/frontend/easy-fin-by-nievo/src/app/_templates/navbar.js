@@ -1,10 +1,18 @@
+"use client"
 import React from 'react'
 import Image from 'next/image'
 import MenuIcon from '../../../public/icons/icon_menu_hamburguer_amber.png'
 import LogoutIcon from '../../../public/icons/logout_menu_amber.png'
-
+import NavBarSubmenu from '@/app/_templates/navbarSubMenu'
 
 function NavBar(props){
+
+    const [activeMenu, setActiveMenu]   = React.useState(false)
+
+    const handlerSubMenu =()=>{
+        setActiveMenu(!activeMenu)
+    }
+
     return(
         <React.Fragment>
             <div 
@@ -13,8 +21,14 @@ function NavBar(props){
                     <Image
                         alt='Menu-hamburguer'
                         src={MenuIcon}
-                        className=''
+                        className='hover:opacity-40'
+                        onClick={handlerSubMenu}
                     />
+                    {
+                        activeMenu===true?
+                        <NavBarSubmenu/>
+                        :null
+                    }
                 </div>
                 <div>
                     <h1
@@ -23,12 +37,12 @@ function NavBar(props){
                         {props.AppNameMainTitleFromNavBar}
                     </h1>
                 </div>
-                <div className='text-center '>
+                <div className='text-center'>
                     <button>
                         <Image
                             alt='logout-icon'
                             src={LogoutIcon}
-                            className=''
+                            className='hover:opacity-40'
                         />
                     </button>
                 </div>

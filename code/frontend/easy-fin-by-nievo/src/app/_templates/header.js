@@ -1,5 +1,5 @@
 import React from 'react' ;
-import NavBar from '@/pages/_templates/navbar'
+import NavBar from '@/app/_templates/navbar'
 
 function Header(props){
     return(

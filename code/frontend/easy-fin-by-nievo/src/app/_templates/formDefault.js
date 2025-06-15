@@ -12,7 +12,7 @@ function FormDefault({children}){
                     className='w-[18%] rounded-full  m-auto'
                 />
            </div>
-           <div className='flex h-fit gap-2.5 flex-col w-[70%] sm:w-[20%] rounded-lg justify-evenly text-left self-center m-auto mb-[1%] items-center bg-gray-900'>
+           <div className='flex h-full gap-2.5 flex-col w-[70%] sm:w-[30%] rounded-lg justify-evenly text-left self-center m-auto mb-[1%] items-center bg-gray-900'>
             {children}
            </div>
         </React.Fragment>

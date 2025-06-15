@@ -35,7 +35,7 @@ const dic = {
 function Footer(){
     return(
         <React.Fragment>
-            <div className='bg-gray-900 text-center  pb-4 rounded-t-lg fixed bottom-0 w-full'>
+            <div className='bg-gray-900 text-center mt-2  pb-4 rounded-t-lg fixed bottom-0 w-full'>
                 <div className='flex flex-col gap-2 p-8 items-center justify-around sm:flex-row sm:items-start sm:gap-6 sm:py-4'>
                     {
                         menuData.map((item, index)=>{

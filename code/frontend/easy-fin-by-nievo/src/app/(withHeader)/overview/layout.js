@@ -1,22 +1,20 @@
 import "@/app/globals.css";
+import React from 'react'
 import Header from "@/app/_templates/header" 
 import Footer from "@/app/_templates/footer" 
 
 export const metadata = {
-  title: "Nievo Finance",
-  Nav:"Easy Fin By Nievo"
+  Nav: "Overview - Nievo Finance"
 };
 
-export default function RootLayout({ children }) {
+export default function HomeLayout({ children }) {
   return (
-    <html lang="en">
-      <body>
-        <Header 
+      <React.Fragment>
+        <Header
           Nav={metadata.Nav}
         />
         {children}
         <Footer />
-      </body>
-    </html>
+      </React.Fragment>
   );
 }

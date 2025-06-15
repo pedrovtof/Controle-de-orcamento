@@ -1,18 +1,17 @@
 import "@/app/globals.css";
-import Header from "@/app/_templates/header" 
-import Footer from "@/app/_templates/footer" 
+import dynamic from 'next/dynamic'
+ 
 
 export const metadata = {
-  title: "Home - Nievo Finance",
-  Nav:"Easy Fin By Nievo"
+  title: "Nievo Finance"
 };
 
 export default function RootLayout({ children }) {
+ 
   return (
     <html lang="en">
-      <body className="rounded-full bg-radial-[at_50%_75%] from-sky-200 via-blue-400 to-indigo-900 to-90%">
+      <body className="bg-gray-950">
         {children}
-        <Footer />
       </body>
     </html>
   );

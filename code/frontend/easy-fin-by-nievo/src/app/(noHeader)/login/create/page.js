@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Home(){
+function CreateLogin(){
     return(
         <React.Fragment>
             <h1>Ola</h1>
@@ -8,4 +8,4 @@ function Home(){
     )
 }
 
-export default Home
+export default CreateLogin

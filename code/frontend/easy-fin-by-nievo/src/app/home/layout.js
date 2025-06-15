@@ -3,14 +3,17 @@ import Header from "@/app/_templates/header"
 import Footer from "@/app/_templates/footer" 
 
 export const metadata = {
-  title: "Home - Nievo Finance",
+  title: "Nievo Finance",
   Nav:"Easy Fin By Nievo"
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="rounded-full bg-radial-[at_50%_75%] from-sky-200 via-blue-400 to-indigo-900 to-90%">
+      <body>
+        <Header 
+          Nav={metadata.Nav}
+        />
         {children}
         <Footer />
       </body>

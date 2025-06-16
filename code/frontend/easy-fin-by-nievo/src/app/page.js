@@ -14,7 +14,8 @@ export default function Home() {
           <Image
             alt='logo-brand'
             src={Logo}
-            className='w-[18%] rounded-full '
+            className='w-[18%] rounded-full'
+            priority
           />
           <h1 className='font-bold w-fit text-3xl text-amber-400'>
             Nievo Fin

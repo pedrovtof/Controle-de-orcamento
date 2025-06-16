@@ -1,21 +1,39 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useForm } from "react-hook-form"
+import { useSnack} from '@/app/_templates/snackbarContext'
+import Loading from '../../../../public/icons/loading_gif.gif' 
+import Image from 'next/image'
 
 function Login(){
     const labelsTailwind = 'mb-1 p-1 w-[100%] block text-sm/6 font-medium text-amber-400 ';
     const inputTailwind = 'block w-full rounded-md mb-1 grow p-1 text-base text-gray-900 bg-white placeholder:text-gray-400 focus:outline-none sm:text-sm/6'
     const router = useRouter()
+    const {setSnack} = useSnack()
 
     const { 
         register, 
         handleSubmit,
     } = useForm()
 
-    const sendForm=(data)=>{
-        return console.log(data)
+    
+    const [buttonState, setButtonState] = useState(true);
+
+    const handlerButton=()=>{
+        setButtonState(false)
+        setTimeout(() => {
+        setButtonState(true)
+        }, 2000)   
     }
+
+
+    const sendForm=(data)=>{
+        console.log(data)
+        setSnack({ visible: true, message: 'Dados enviados!'})
+        handlerButton()
+    }
+
 
     return(
         <React.Fragment>
@@ -51,12 +69,27 @@ function Login(){
                                 autoComplete="off"
                                 />
                 </label>
-                <button 
+                {   buttonState?
+                    <button 
                     className='w-[100%] cursor-pointer relative   p-1 text-white rounded-lg bg-amber-400 hover:opacity-40 hover:bg-amber-700'
                     type='submit'
-                >
-                    Next
-                </button>
+                    >
+                        Next
+                    </button>:
+                    <span 
+                    className='w-[100%] block text-center cursor-pointer relative   p-1 text-white rounded-lg opacity-90 bg-amber-400'
+                    >
+                        {
+                            <Image
+                                alt='loading-gif'
+                                src={Loading}
+                                className='w-[15%] relative rounded-full m-auto'
+                            />
+                        }
+                    </span>
+                }
+                
+                    
                 <button 
                     className={`${labelsTailwind} underline cursor-pointer mb-2`}
                     onClick={() => router.push('/login/create')}

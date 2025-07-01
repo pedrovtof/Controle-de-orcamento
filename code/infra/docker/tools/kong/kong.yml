@@ -2,7 +2,7 @@ _format_version: "3.0"
 
 services:
   - name: auth-service
-    url: http://192.168.0.91:8081
+    url: http://127.0.0.1:8081
     routes:
       - name: route-auth-service
         paths:
@@ -17,7 +17,7 @@ services:
                     - exp
   
   - name: core-service
-    url: http://192.168.0.91:8082
+    url: http://127.0.0.1:8082
     routes:
       - name: route-core-service
         paths:
@@ -25,7 +25,7 @@ services:
         strip_path: true
   
   - name: data-service
-    url: http://192.168.0.91:8083
+    url: http://127.0.0.1:8083
     routes:
       - name: route-data-service
         paths:
@@ -63,6 +63,6 @@ consumers:
 jwt_secrets:
   - consumer: consumer-auth-server-jwt
     key: "login-api-key"
-    secret: "a22925b2-0f2c-4942-bdbb-73efed5523f1"
+    secret: "slug-toke-here-for-jwt"
     algorithm: HS256
 

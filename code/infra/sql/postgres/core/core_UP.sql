@@ -24,11 +24,11 @@ OPTIONS (dbname 'signup');
 
 CREATE USER MAPPING FOR POSTGRES
 SERVER signup_server_cross_database
-OPTIONS (user 'cross_database_user', password 'd3f0f05f-2368-41a6-a2a6-73f4b1be8df5');
+OPTIONS (user 'cross_database_user', password 'senh@segUr@1');
 
 CREATE USER MAPPING FOR APP_SYSTEM_SERVICE_EFN
 SERVER signup_server_cross_database
-OPTIONS (user 'cross_database_user', password 'd3f0f05f-2368-41a6-a2a6-73f4b1be8df5');
+OPTIONS (user 'cross_database_user', password 'senh@segUr@1');
 
 CREATE FOREIGN TABLE accounts.signup_user_details_user (
     id INTEGER,

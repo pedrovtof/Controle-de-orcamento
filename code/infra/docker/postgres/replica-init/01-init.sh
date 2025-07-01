@@ -6,7 +6,7 @@ until pg_isready -h postgres_nodea -p 5432; do
 done
 
 rm -rf /var/lib/postgresql/data/*
-PGPASSWORD=akca2jkdadsAc2 pg_basebackup -h postgres_nodea -D /var/lib/postgresql/data -U replica -Fp -Xs -P -R
+PGPASSWORD=SENHA_VAI_AQUI pg_basebackup -h postgres_nodea -D /var/lib/postgresql/data -U replica -Fp -Xs -P -R
 
 touch /var/lib/postgresql/data/standby.signal
 

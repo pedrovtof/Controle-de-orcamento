@@ -3,6 +3,9 @@ const app = express()
 app.use(express.json())
 const port = 8081
 
+var cors = require('cors')
+app.use(cors())
+
 app.get('/', (req, res) => {
   res.json({message:'Root route is empty'})
 })

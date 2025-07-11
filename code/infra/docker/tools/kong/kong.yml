@@ -56,6 +56,28 @@ plugins:
       redis_ssl_verify: false
       redis_timeout: 2000
       sync_rate: -1
+  
+  - name: cors
+    enabled: true
+    instance_name: cors-req
+    protocols:
+      - http
+      - https
+    config:
+      credentials: false
+      max_age: 7200
+      methods:
+        - GET
+        - PUT
+        - POST
+        - DELETE
+      origins:
+        - "*"
+      headers:
+        - Authorization
+        - Content-Type
+      preflight_continue: false
+      private_network: true
 
 consumers:
   - username: consumer-auth-server-jwt

@@ -5,12 +5,15 @@ import { useForm } from "react-hook-form"
 import { useSnack} from '@/app/_templates/snackbarContext'
 import Loading from '../../../../public/icons/loading_gif.gif' 
 import Image from 'next/image'
+import envForDev from '@/app/env'
+import axios from 'axios'
 
 function Login(){
     const labelsTailwind = 'mb-3 p-1 w-[100%] block sm:text-sm/6 font-medium text-amber-400 ';
     const inputTailwind = 'isabled:opacity-75 block w-full rounded-md mb-1 grow px-4 py-1 text-base text-gray-900 bg-white placeholder:text-gray-400 focus:outline-none sm:text-sm/6'
     const router = useRouter()
     const {setSnack} = useSnack()
+    
 
     const { 
         register, 
@@ -32,10 +35,31 @@ function Login(){
         setIsactiveInput(x)
     }
 
+
+    const handlerLoginAuthService=async(data)=>{
+
+        const headers = {
+            "Content-Type": "application/json",
+            Authorization: 'login-api-key',
+        }
+        const url = `${envForDev['api-auth-service'].test}}`
+        console.log(url)
+        await axios.get(url, {headers})
+        .then((resp)=>{
+            handlerButton()
+            console.log(`${resp.status} \n\n ${JSON.stringify(resp.data, null, 2)}`)
+            setSnack({ visible: true, message: 'Sucesso!', color:'sucess'})
+        })
+        .catch((resp)=>{
+            handlerButton()
+            console.log(`${resp}`)
+            setSnack({ visible: true, message: 'Houve um erro, tente novamente mais tarde', color:'error'})
+        })         
+    }
+
     const sendForm=(data)=>{
         handlerIsactiveInput(true)
-        setSnack({ visible: true, message: 'Houve um erro, tente novamente mais tarde', color:'error'})
-        handlerButton()
+        handlerLoginAuthService(data)
     }
 
 

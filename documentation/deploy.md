@@ -19,7 +19,6 @@ Para deploy, é necessário instalar algumas dependencias e aplicativos recomend
 
 ### Pacotes neceessários
 
-
 #### Configurações
 
 Inicie os containers dockers.
@@ -51,5 +50,12 @@ OBS:
 Valide se postgres nodeB subiu de forma correta e esta replicando a escrita no nodeA, caso contrario derrube o nodeB e suba novamente.
 
 Se tudo estiver ok, voce pode continuar rodando os script das pastas postgres e clickhouse e suas subpastas, para construir a estrutura do projeto na questão de dados, atualmente não existe migrations.
+
+Para subir serviço de Front-end, acesse a pasta  Controle-de-orcamento\code\Frontend\easy-fin-by-nievo
+Rode npm ci && npm run dev
+
+Confira os IP no arquivo Controle-de-orcamento\code\Frontend\easy-fin-by-nievo\src\app\env.js para ver se as URL estão corretas de acordo com seu ambiente.
+
+É preciso validar se secrect esta correto no kong-api-gateway (jwt_secrets secret) de acordo com seu back-end.
 
 ## English - EUA

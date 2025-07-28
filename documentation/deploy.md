@@ -58,4 +58,13 @@ Confira os IP no arquivo Controle-de-orcamento\code\Frontend\easy-fin-by-nievo\s
 
 É preciso validar se secrect esta correto no kong-api-gateway (jwt_secrets secret) de acordo com seu back-end.
 
+Para fazer requisições corretamente de login, é recomendado que frontend esteja validado com o encriptador.
+As chaves publicas e privadas estaram anexas no devidos lugares e variaveis, para trocas precisa gerar um par novo, use o postman na rota crypto/keygen com metodo post para gerar, o body poderá ser vazio.
+
+alterer as variaveis do frontend Controle-de-orcamento\code\Frontend\easy-fin-by-nievo\src\app\env.js e back-end Controle-de-orcamento\code\backend\node\auth-service\src\config\env.js 
+
+De acordo com sua nova chave, é extremamente recomendavel trocar a variavel passphrase dentro do arquivo tambem.
+
+
+
 ## English - EUA

@@ -1,22 +1,14 @@
 const express = require('express')
+const cors = require('cors')
+const _Routes = require('./src/routes/routes')
+
 const app = express()
-app.use(express.json())
 const port = 8081
 
-var cors = require('cors')
 app.use(cors())
+app.use(express.json())
 
-app.get('/', (req, res) => {
-  res.json({message:'Root route is empty'})
-})
-
-app.get('/test', (req,res)=>{
-  res.json({message:'Test route'})
-})
-
-app.use((req,res)=>{
-  res.status(404).json({message:'This route does not exist'})
-})
+app.use('/',_Routes)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

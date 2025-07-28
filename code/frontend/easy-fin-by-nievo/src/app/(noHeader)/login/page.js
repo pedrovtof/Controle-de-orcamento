@@ -7,13 +7,13 @@ import Loading from '../../../../public/icons/loading_gif.gif'
 import Image from 'next/image'
 import envForDev from '@/app/env'
 import axios from 'axios'
+import { publicEncrypt, privateDecrypt} from 'crypto'
 
 function Login(){
     const labelsTailwind = 'mb-3 p-1 w-[100%] block sm:text-sm/6 font-medium text-amber-400 ';
     const inputTailwind = 'isabled:opacity-75 block w-full rounded-md mb-1 grow px-4 py-1 text-base text-gray-900 bg-white placeholder:text-gray-400 focus:outline-none sm:text-sm/6'
     const router = useRouter()
     const {setSnack} = useSnack()
-    
 
     const { 
         register, 
@@ -38,23 +38,38 @@ function Login(){
 
     const handlerLoginAuthService=async(data)=>{
 
-        const headers = {
-            "Content-Type": "application/json",
-            Authorization: 'login-api-key',
+        class LoginForm{
+            constructor(username, email, password){
+                this.username   = username
+                this.email      = email
+                this.password   = password
+            }
         }
-        const url = `${envForDev['api-auth-service'].test}}`
-        console.log(url)
-        await axios.get(url, {headers})
-        .then((resp)=>{
-            handlerButton()
-            console.log(`${resp.status} \n\n ${JSON.stringify(resp.data, null, 2)}`)
-            setSnack({ visible: true, message: 'Sucesso!', color:'sucess'})
+
+        const CryptLoginForm = new LoginForm(
+            publicEncrypt(envForDev['crypto'].publicKey,Buffer.from(data.username)).toString('hex'),
+            publicEncrypt(envForDev['crypto'].publicKey,Buffer.from(data.email)).toString('hex'),
+            publicEncrypt(envForDev['crypto'].publicKey,Buffer.from(data.password)).toString('hex')
+        )
+
+        //console.log(`usuario:  ${CryptLoginForm.username}, \n email: ${CryptLoginForm.email},  \n senha: ${CryptLoginForm.password}`)
+
+        const url = `${envForDev['api-auth-service'].CreateUser}`
+        await axios.post(url, {
+            "username": CryptLoginForm.username,
+            "email": CryptLoginForm.email,
+            "password": CryptLoginForm.password
         })
-        .catch((resp)=>{
+        .then(resp=>{
             handlerButton()
-            console.log(`${resp}`)
+            let apiMessage = JSON.stringify(resp.data.message).replace(/^"|"$/g, '')
+            setSnack({ visible: true, message: `${apiMessage}`, color:JSON.stringify(resp.data.stackStatus).replace(/^"|"$/g, '')})
+        })
+        .catch(resp=>{
+            handlerButton()
             setSnack({ visible: true, message: 'Houve um erro, tente novamente mais tarde', color:'error'})
-        })         
+        })
+            
     }
 
     const sendForm=(data)=>{
@@ -65,6 +80,11 @@ function Login(){
 
     return(
         <React.Fragment>
+            <div>
+                <h1 className='text-3xl text-amber-400'>
+                    Create User
+                </h1>
+            </div>
             <form onSubmit={handleSubmit(sendForm)}  method="post">
                 <label htmlFor="username" className={labelsTailwind}>
                     *Name: <input 
